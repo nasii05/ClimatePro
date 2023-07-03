@@ -1,0 +1,11 @@
+/* #weather-container{
+  background-image: url('../../assets/images/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+#main{
+  background-image: url('../../assets/images/main-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
