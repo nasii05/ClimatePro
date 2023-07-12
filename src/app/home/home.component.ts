@@ -12,10 +12,11 @@ import { allForecast } from '../models/forecast.model';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  DateToday = new Date();
   input!: string;
   geoData!: Observable<location[]>;
   result!: location;
-  current!:weather;
+  current!:any;
   forcast!:any;
   userSearchUpdate = new Subject<string>();
   visible:boolean = false;
@@ -49,8 +50,8 @@ export class HomeComponent {
     const lat = key.latitude;
     const lon = key.longitude;
     this.http.getweather(lat, lon).subscribe((res) => {
-      this.forcast = res
-      console.log(this.forcast)
+      this.current = res
+      console.log(this.current)
     });
     this.getForcastTs(lat, lon);
     this.visible = !this.visible;
@@ -58,7 +59,10 @@ export class HomeComponent {
   }
 
   getForcastTs(lat: number, lon: number) {
-    this.http.getForcast(lat, lon).subscribe((res) => console.log(res));
+    this.http.getForcast(lat, lon).subscribe((res) =>{
+      this.forcast = res
+      console.log(this.forcast)
+    });
   }
 
   getLocation() {

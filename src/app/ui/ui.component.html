@@ -1,20 +1,31 @@
-<div class="bg-white w-full h-screen flex items-center justify-center">
-  <div class="w-80 sm:w-96 md:w-[50rem] h-max pb-5 bg-white border-2 border-black rounded-md
-  shadow-xl shadow-emerald-500/50">
-      <!-- heading area -->
-      <div class="w-full h-max py-2 bg-white text-black">
-        <h1>Climate Pro</h1>
-      </div>
+<div class=" w-full h-screen flex items-center justify-center overflow-hidden"
+ id="main">
+  <div class="w-[95%] sm:w-96 md:w-[50rem] h-max pb-5 bg-white border-2 border-black rounded-md
+  shadow-xl relative overflow-hidden">
+    <!-- heading area -->
+    <div class="w-full h-max py-2 bg-white text-black flex items-center justify-center">
+      <h1>Climate Pro</h1>
+    </div>
 
-      <!-- Searchbar area -->
-      <div class="w-full h-max py-2 bg-emerald-500 text-black font-mono
+    <!-- Searchbar area -->
+    <div class="w-full h-max py-2 bg-emerald-500 text-black font-mono
       flex items-center justify-center">
-          <form action="" class="flex w-full items-center justify-center">
-            <input class="w-[80%] h-8 md:h-10 px-2 rounded-md"
-            type="text" placeholder="search any place..">
-          </form>
+      <form action="" class="flex w-full items-center justify-center">
+        <input class="w-[80%] h-8 md:h-10 px-2 rounded-md" type="text" placeholder="search any place..">
+      </form>
+    </div>
+    <!-- search recommendations -->
+    <div *ngIf="visible" class="absolute z-50 ">
+      <div class="w-full bg-white text-black flex items-center justify-center border-b-2 border-black">
+        <h1 class="text-xl md:text-2xl">
+          Argentina
+        </h1>
       </div>
+    </div>
+
+    <div class="bg-blue-200 w-full flex flex-wrap flex-row">
+       <div class="w-1/2 bg-white h-max py-2 border-r-2 border-r-black"></div>
+       <div class="w-1/2 bg-white h-max py-2"></div>
+    </div>
   </div>
 </div>
-
-
