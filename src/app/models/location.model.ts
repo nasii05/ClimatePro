@@ -1,6 +1,19 @@
 export interface location{
   data: Data[];
-  metadata: Metadata
+  metadata: Metadata;
+  city:string;
+  country: string;
+  countryCode: string;
+  id:number;
+  latitude: number;
+  longitude:number;
+  name:number;
+  population:number;
+  region:string;
+  regionCode:string;
+  regionWdId:string;
+  type:string;
+  wikiDataId:string;
 }
 
 export interface Metadata{
@@ -22,4 +35,20 @@ export interface Data{
   latitude: number;
   longitude: number;
   population: number;
+}
+
+export interface cityModel{
+  city:string;
+  country: string;
+  countryCode: string;
+  id:number;
+  latitude: number;
+  longitude:number;
+  name:number;
+  population:number;
+  region:string;
+  regionCode:string;
+  regionWdId:string;
+  type:string;
+  wikiDataId:string;
 }
