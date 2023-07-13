@@ -4,6 +4,8 @@ import { WeatherService } from '../services/weather.service';
 // import { weather } from '../models/weather.model';
 import { Data, location } from '../models/location.model';
 import { Observable, Subject, debounceTime, distinctUntilChanged } from 'rxjs';
+import { List } from '../models/forecast.model';
+import { DatePipe } from '@angular/common';
 // import { allForecast } from '../models/forecast.model';
 
 @Component({
@@ -17,11 +19,14 @@ export class HomeComponent {
   geoData!: Observable<location[]>;
   result!: location;
   current!:any;
-  forcast!:any;
+  forcast!:List[];
+  todaysForcast!:List[];
+  weeklyForcast!:List[];
   userSearchUpdate = new Subject<string>();
   visible:boolean = false;
+  availableForecast!:number;
 
-  constructor(private http: WeatherService) {
+  constructor(private http: WeatherService, private DatePipe:DatePipe) {
     // this.http.getweather().subscribe((res)=>{
     //   console.log(res);
     // })
@@ -60,13 +65,27 @@ export class HomeComponent {
 
   getForcastTs(lat: number, lon: number) {
     this.http.getForcast(lat, lon).subscribe((res) =>{
-      this.forcast = res
-      console.log(this.forcast)
+    this.todaysForcast =  res.filter((val)=> {
+       let dat  = this.DatePipe.transform(val.dt_txt, 'dd/MM/yyyy')
+       let formatdate = this.DatePipe.transform(this.DateToday, 'dd/MM/yyyy')
+
+       return dat == formatdate;
+     })
+     this.availableForecast = this.todaysForcast.length
+
+     this.weeklyForcast = res.filter((val)=>{
+       let dat = this.DatePipe.transform(val.dt_txt, 'HH');
+       return dat == '12';
+
+     })
+
+     console.log(this.todaysForcast, this.weeklyForcast)
     });
   }
 
   getLocation() {
     this.http.getLocation(this.input).subscribe((res) => {
+
       this.result = res;
       console.log(this.result);
     });

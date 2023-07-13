@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { location } from '../models/location.model';
+import { List, allForecast } from '../models/forecast.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,15 +30,16 @@ export class WeatherService {
     });
   }
 
-  getForcast(lat: number, lon: number) {
-    return this.http.get(this.forecastUrl, {
+  getForcast(lat: number, lon: number):Observable<List[]> {
+    return this.http.get<allForecast>(this.forecastUrl, {
       params: {
         appid: this.weatherKey,
         units: 'metric',
         lat: lat,
         lon: lon,
       },
-    });
+    })
+    .pipe(map(res => res.list));
   }
 
   getLocation(input: string): Observable<location> {

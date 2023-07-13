@@ -27,7 +27,7 @@ export interface List{
   main: Main;
   weather: Weather[];
   clouds: Clouds;
-  wind:Window;
+  wind:Wind;
   visibility: number;
   pop: number;
   rain?:Rain;
