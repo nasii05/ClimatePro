@@ -108,13 +108,14 @@
 
           </div>
 
-          <div class="w-full bg-white h-max flex items-center justify-center gap-2">
-              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
-              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
-              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
-              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
-              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
-
+          <div class="w-full py-5 bg-inherit h-max flex items-center justify-center gap-2">
+              <h1 class="text-xl"></h1>
+              <div class="w-1/5 h-24 py-5 bg-black/50 bg-opacity-10 rounded-md flex flex-col items-center justify-center gap-1"
+              *ngFor="let item of todaysForcast">
+                <h1 class="md:text-lg">{{item.dt_txt|date:'hh:mm a'}}</h1>
+                <img class="w-[1.8rem] sm:w-[2.5rem]" src="../../assets/images/{{item.weather[0].icon}}.png" alt="">
+                <p class="font-medium sm:font-semibold">{{item.main.feels_like| number : '1.0-0'}}°C</p>
+              </div>
           </div>
         </div>
 
