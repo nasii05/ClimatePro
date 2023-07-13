@@ -1,8 +1,8 @@
-<div class="w-full h-[100vh] flex justify-center items-center" id="main">
+<div class="w-full h-max md:h-screen flex justify-center items-center" id="main">
   <div
-    class="w-80 h-[90vh] md:h-[40rem] bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 md:w-[50rem] lg:w-[84rem] rounded-md overflow-hidden shadow-2xl"
+    class="w-[22rem] h-[50rem] p-2 md:h-[40rem] bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 md:w-[50rem] lg:w-[84rem] rounded-md overflow-hidden shadow-2xl"
     id="weather-container">
-    <div class="w-full relative h-full flex flex-col shadow-2xl">
+    <div class="w-full relative h-max flex flex-col shadow-2xl">
       <div class="w-full bg-inherit h-20 flex justify-center items-center">
         <div class="ml-10 px-5 bg-gradient-to-r from-emerald-100 via-emerald-200 to-emerald-300 rounded-xl">
           <h1 class="text-4xl font-marker">Climate-pro</h1>
@@ -34,24 +34,25 @@
       </div>
 
       <div class="w-full h-max bg-inherit flex flex-col md:flex md:flex-row" *ngIf="current">
-        <div class="h-max py-2 w-full md:w-1/2 md:h-[40rem] bg-red-400 flex flex-col flex-wrap">
+        <div class="h-max py-2 w-full md:w-1/2 md:h-[40rem] bg-inherit text-white flex flex-col flex-wrap ">
           <div class="text-center text-xl">current weather</div>
-          <div class="w-full bg-white h-28 flex items-center justify-center gap-2">
-            <div class="w-2/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+          <div class="w-full bg-inherit h-28 flex items-center justify-center gap-2 md:text-2xl">
+            <div class="w-2/4 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center justify-center">
               <h1>{{ current?.name }},{{ current?.sys.country }}</h1>
               <h1>{{ DateToday | date }}</h1>
             </div>
-            <div class="w-1/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+            <div class="w-1/4 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center justify-center">
               <h1>{{ current?.main?.temp }}℃</h1>
               <h1>{{ current?.weather[0]?.description }}</h1>
             </div>
-            <div class="w-1/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+            <div class="w-1/4 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center justify-center">
               <img src="../../assets/images/clouds.png" alt="" class="w-auto" />
             </div>
           </div>
 
-          <div class="w-full bg-white h-28 flex items-center justify-center gap-2">
-            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center items-center justify-center">
+          <div class="w-full bg-inherit h-28 flex items-center justify-center gap-2 md:text-2xl">
+
+            <div class="w-1/2 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center items-center justify-center">
               <div class="flex flex-row gap-x-2 text-center">
                 <h1 class="flex">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -67,7 +68,8 @@
                 <h1>{{current?.main?.feels_like}}℃</h1>
               </div>
             </div>
-            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center items-center justify-center">
+
+            <div class="w-1/2 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center items-center justify-center">
               <div class="flex flex-row gap-x-2 items-center justify-center">
                 <h1 class="flex flex-row">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5" viewBox="0 0 16 16">
@@ -78,41 +80,67 @@
               </div>
               <h1> {{current?.wind?.speed}}</h1>
             </div>
-            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+
+            <div class="w-1/2 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center items-center justify-center">
               <div class="flex flex-row gap-x-2 text-center">
                 <h1 class="flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="mt-1" viewBox="0 0 16 16">
-                  <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z" />
-                  <path
-                    d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5" viewBox="0 0 16 16">
+                    <path d="M11.473 9a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 14h8.5a2.5 2.5 0 1 0-.027-5z"/>
+                    <path d="M14.544 9.772a3.506 3.506 0 0 0-2.225-1.676 5.502 5.502 0 0 0-6.337-4.002 4.002 4.002 0 0 1 7.392.91 2.5 2.5 0 0 1 1.17 4.769z"/>
                   </svg>
                   clouds
                 </h1>
               </div>
+              <h1>{{current?.clouds?.all}}%</h1>
             </div>
-            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+
+            <div class="w-1/2 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center items-center justify-center">
               <div class="flex flex-row gap-x-2 text-center">
                 <h1 class="flex">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="mt-1" viewBox="0 0 16 16">
-                  <path d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5z" />
-                  <path
-                    d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1zm5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5zm4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0zM8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5zM12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5zm-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708zM8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-5 h-5" viewBox="0 0 16 16">
+                    <path d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6ZM6.646 4.646l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448c.82-1.641 1.717-2.753 2.093-3.13Z"/>
                   </svg>
-                  Feels like
+                  Humidity
                 </h1>
               </div>
-              <h1></h1>
+              <h1>{{current?.main?.humidity}}%</h1>
             </div>
+
+          </div>
+
+          <div class="w-full bg-white h-max flex items-center justify-center gap-2">
+              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
+              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
+              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
+              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
+              <div class="w-1/5 h-20 bg-blue-400 rounded-md"></div>
+
           </div>
         </div>
 
-        <div class="h-64 w-full md:w-1/2 md:h-[39rem] bg-white"></div>
+        <!-- <div class="h-80 w-full py-2 md:w-1/2 md:h-[37rem] bg-white"> </div> -->
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <h1>{{forcast?.name}}</h1>
               <h1> feels like {{forcast?.main?.feels_like}} ☁️</h1>

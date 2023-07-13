@@ -6,6 +6,6 @@
 
 #main{
   background-image: url('../../assets/images/main-bg.jpg');
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-size: cover;
 }
