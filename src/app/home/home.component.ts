@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WeatherService } from '../services/weather.service';
-import { weather } from '../models/weather.model';
+// import { weather } from '../models/weather.model';
 import { Data, location } from '../models/location.model';
 import { Observable, Subject, debounceTime, distinctUntilChanged } from 'rxjs';
-import { allForecast } from '../models/forecast.model';
+// import { allForecast } from '../models/forecast.model';
 
 @Component({
   selector: 'app-home',
