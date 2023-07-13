@@ -1,6 +1,6 @@
 <div class="w-full h-[100vh]  flex justify-center items-center " id="main">
   <div
-    class="w-80 h-[30rem] md:h-[40rem]  bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 md:w-[50rem] lg:w-[84rem] rounded-md overflow-hidden shadow-2xl"
+    class="w-80 h-[90vh] md:h-[40rem]  bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 md:w-[50rem] lg:w-[84rem] rounded-md overflow-hidden shadow-2xl"
     id="weather-container">
     <div class="w-full relative h-full  flex flex-col shadow-2xl">
       <div class="w-full bg-inherit h-20 flex justify-center items-center">
@@ -33,30 +33,54 @@
         </div>
       </div>
 
-      <div class="w-full h-full bg-inherit flex flex-col sm:flex sm:flex-row">
-        <div class="bg-white w-full md:w-full h-1/2 sm:h-full">
-          <div *ngIf="current">
-              <div class="w-full text-center">CURRENT WEATHER</div>
-              <div class="h-28 flex flex-row">
-                <div class="w-1/3 h-24 bg-blue-500 flex flex-col text-center gap-y-1">
-                  <h1 class="text-xl">{{current?.name}}, {{current?.sys?.country}}</h1>
-                  <h1 class="text-xl">{{DateToday | date}}</h1>
-                </div>
-                <div class="w-1/3 h-24 bg-blue-500 flex flex-col text-center gap-y-1">
-                  <h1 class="text-xl">{{current?.main?.temp}}℃</h1>
-                  <h1 class="text-xl">{{current?.weather[0]?.description}}</h1>
-                </div>
-                <div class="w-1/3 h-24 bg-blue-500 flex items-center justify-center gap-y-1">
-                  <img src="../../assets/images/clouds.png" alt="" class="h-[90%] w-[80%]">
-                </div>
-              </div>
+      <div class="w-full h-max bg-inherit flex flex-col md:flex md:flex-row" *ngIf="current">
+        <div class="h-max py-2 w-full md:w-1/2 md:h-[40rem]  bg-red-400 flex flex-col flex-wrap ">
 
-              <div class="w-full flex flex-row">
+          <div class="text-center text-xl">current weather</div>
+          <div class="w-full bg-white h-28 flex items-center justify-center gap-2">
+            <div class="w-2/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1>{{current?.name}},{{current?.sys.country}}</h1>
+              <h1>{{DateToday | date}}</h1>
+            </div>
+            <div class="w-1/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1>{{current?.main?.temp}}℃</h1>
+              <h1>{{current?.weather[0]?.description}}</h1>
+            </div>
+            <div class="w-1/4 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <img src="../../assets/images/clouds.png" alt="" class="w-auto">
+            </div>
+          </div>
 
-              </div>
+          <div class="w-full bg-white h-28 flex items-center justify-center gap-2">
+            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1>
+                Feels like
+              </h1>
+              <h1></h1>
+            </div>
+            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1>
+                wind
+              </h1>
+              <h1></h1>
+            </div>
+            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1>
+                clouds
+              </h1>
+              <h1></h1>
+            </div>
+            <div class="w-1/2 h-24 rounded-md bg-blue-200 flex flex-col gap-2 text-center justify-center">
+              <h1></h1>
+              <h1></h1>
+            </div>
           </div>
         </div>
-        <div class="bg-blue-300 w-full md:w-full h-1/2 sm:h-full"></div>
+
+
+        <div class="h-64 w-full md:w-1/2 md:h-[39rem]  bg-white">
+
+        </div>
       </div>
 
     </div>
@@ -70,3 +94,29 @@
               <h1>min: {{forcast?.main?.temp_min}} ℃</h1>
               <h1>max:{{forcast?.main?.temp_max}} ℃</h1> -->
 <!-- <div class="w-80 md:w-[80%]  bg-red-300 rounded-md h-40 py-2" *ngIf="forcast"></div> -->
+
+
+
+<!-- <div *ngIf="current">
+  <div class="w-full text-center">CURRENT WEATHER</div>
+  <div class="h-max flex flex-row">
+    <div class="w-1/3 h-24  flex flex-col text-center gap-y-1">
+      <h1 class="text-xl">{{current?.name}}, {{current?.sys?.country}}</h1>
+      <h1 class="text-xl">{{DateToday | date}}</h1>
+    </div>
+    <div class="w-1/3 h-24  flex flex-col text-center gap-y-1">
+      <h1 class="text-xl">{{current?.main?.temp}}℃</h1>
+      <h1 class="text-xl">{{current?.weather[0]?.description}}</h1>
+    </div>
+    <div class="w-1/3 h-24  flex items-center justify-center ">
+      <img src="../../assets/images/clouds.png" alt="" class="h-[94%] w-[80%]">
+    </div>
+  </div>
+  <div class="w-full h-max bg-white flex flex-wrap">
+
+  </div>
+
+  <div class="w-full flex flex-row">
+
+  </div>
+</div> -->
