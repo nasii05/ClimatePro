@@ -1,7 +1,7 @@
 <div class="w-full h-max md:h-screen flex justify-center items-center" id="main">
   <div
     class="w-[22rem] h-[50rem] p-2 md:h-[40rem] bg-gray-900 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-40 md:w-[50rem] lg:w-[84rem] rounded-md overflow-hidden shadow-2xl"
-    id="weather-container">
+    id="weather-container" [ngClass]="{'h-max': current}">
     <div class="w-full relative h-max flex flex-col shadow-2xl">
       <div class="w-full bg-inherit h-20 flex justify-center items-center">
         <div class="ml-10 px-5 bg-gradient-to-r from-emerald-100 via-emerald-200 to-emerald-300 rounded-xl">
@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="w-full h-max bg-inherit flex flex-col md:flex md:flex-row" *ngIf="current">
+      <div class="w-full h-max md:gap-x-2 bg-inherit flex flex-col md:flex md:flex-row" *ngIf="current">
         <div class="h-max py-2 w-full md:w-1/2 md:h-[40rem] bg-inherit text-white flex flex-col flex-wrap ">
           <div class="text-center text-xl">current weather</div>
           <div class="w-full bg-inherit h-28 flex items-center justify-center gap-2 md:text-2xl">
@@ -46,7 +46,7 @@
               <h1>{{ current?.weather[0]?.description }}</h1>
             </div>
             <div class="w-1/4 h-24 rounded-md bg-inherit flex flex-col gap-2 text-center justify-center">
-              <img src="../../assets/images/clouds.png" alt="" class="w-auto" />
+              <img src="../../assets/images/{{current?.weather[0]?.icon}}.png" alt="" class="w-auto" />
             </div>
           </div>
 
@@ -119,7 +119,37 @@
           </div>
         </div>
 
-        <!-- <div class="h-80 w-full py-2 md:w-1/2 md:h-[37rem] bg-white"> </div> -->
+        <div class="h-80 w-full py-2 md:w-1/2 md:h-[37rem] bg-transparent flex flex-col gap-y-2 md:gap-y-4">
+          <div class="w-full h-max py-2 gap-2 flex flex-row bg-transparent text-white justify-start"
+           *ngFor="let item of weeklyForcast">
+              <div class="w-1/3 h-14 bg-gradient-to-r from-black/50 via-black/40  to-black/30
+               flex flex-col gap-y-2 text-center items-center justify-center rounded-md shadow-md
+               shadow-white inset-1">
+                <h1>{{item?.dt_txt | date:'EEEE'}}</h1>
+                <div class="flex gap-x-1">
+                  <img src="../../assets/images/{{item.weather[0].icon}}.png" class="w-6 h-6" alt="">
+                </div>
+              </div>
+
+              <div class="w-1/3 h-14 bg-gradient-to-r from-black/50 via-black/40  to-black/30
+              flex flex-col gap-y-2 text-center items-center justify-center rounded-md shadow-md
+              shadow-white inset-1">
+                <h1>{{item.main.feels_like| number:'1.0-0'}}°C</h1>
+                <div class="flex gap-x-1">
+                   <h1>{{item.clouds.all}}%</h1>
+                </div>
+              </div>
+
+              <div class="w-1/3 h-14 bg-gradient-to-r from-black/50 via-black/40  to-black/30
+              flex flex-col gap-y-2 text-center items-center justify-center rounded-md shadow-md
+              shadow-white inset-1">
+                <h1>{{item.wind.speed}}</h1>
+                <div class="flex gap-x-1">
+                  <h1>{{item.main.humidity}}%</h1>
+                </div>
+              </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

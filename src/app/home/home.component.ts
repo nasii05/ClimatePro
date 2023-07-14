@@ -85,7 +85,6 @@ export class HomeComponent {
 
   getLocation() {
     this.http.getLocation(this.input).subscribe((res) => {
-
       this.result = res;
       console.log(this.result);
     });
