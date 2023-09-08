@@ -47,7 +47,7 @@ export class HomeComponent {
     this.http.getLocation(this.input).subscribe((res) => {
       this.result = res;
       this.result.latitude = res.latitude;
-      console.log(this.result);
+      // console.log(this.result);
     });
   }
 
@@ -56,18 +56,18 @@ export class HomeComponent {
     const lon = key.longitude;
     this.http.getweather(lat, lon).subscribe((res) => {
       this.current = res
-      console.log(this.current)
+      // console.log(this.current)
     });
     this.getForcastTs(lat, lon);
     this.visible = !this.visible;
-    console.log(this.visible, "item gone");
+    // console.log(this.visible, "item gone");
   }
 
   getForcastTs(lat: number, lon: number) {
     this.http.getForcast(lat, lon).subscribe((res) =>{
     this.todaysForcast =  res.filter((val)=> {
-       let dat  = this.DatePipe.transform(val.dt_txt, 'dd/MM/yyyy')
-       let formatdate = this.DatePipe.transform(this.DateToday, 'dd/MM/yyyy')
+       let dat  = this.DatePipe.transform(val.dt_txt, 'dd/MM/yyyy');
+       let formatdate = this.DatePipe.transform(this.DateToday, 'dd/MM/yyyy');
 
        return dat == formatdate;
      })
@@ -79,14 +79,14 @@ export class HomeComponent {
 
      })
 
-     console.log(this.todaysForcast, this.weeklyForcast)
+    //  console.log(this.todaysForcast, this.weeklyForcast);
     });
   }
 
   getLocation() {
     this.http.getLocation(this.input).subscribe((res) => {
       this.result = res;
-      console.log(this.result);
+      // console.log(this.result);
     });
   }
 
