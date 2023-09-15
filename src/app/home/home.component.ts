@@ -27,13 +27,6 @@ export class HomeComponent {
   availableForecast!:number;
 
   constructor(private http: WeatherService, private DatePipe:DatePipe) {
-    // this.http.getweather().subscribe((res)=>{
-    //   console.log(res);
-    // })
-
-    // this.http.getLocation(this.input).subscribe((res)=>{
-    //   console.log(res)
-    // })
 
     this.userSearchUpdate
       .pipe(debounceTime(800), distinctUntilChanged())
@@ -60,7 +53,6 @@ export class HomeComponent {
     });
     this.getForcastTs(lat, lon);
     this.visible = !this.visible;
-    // console.log(this.visible, "item gone");
   }
 
   getForcastTs(lat: number, lon: number) {
@@ -78,15 +70,12 @@ export class HomeComponent {
        return dat == '12';
 
      })
-
-    //  console.log(this.todaysForcast, this.weeklyForcast);
     });
   }
 
   getLocation() {
     this.http.getLocation(this.input).subscribe((res) => {
       this.result = res;
-      // console.log(this.result);
     });
   }
 

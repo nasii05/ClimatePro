@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "climatepro-05"
+    "default": "climate-05"
+  },
+  "targets": {
+    "climate-05": {
+      "hosting": {
+        "ClimatePro": [
+          "climate-05"
+        ]
+      }
+    }
   }
 }
