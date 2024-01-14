@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WeatherService } from '../services/weather.service';
-// import { weather } from '../models/weather.model';
 import { Data, location } from '../models/location.model';
 import { Observable, Subject, debounceTime, distinctUntilChanged } from 'rxjs';
 import { List } from '../models/forecast.model';
 import { DatePipe } from '@angular/common';
-// import { allForecast } from '../models/forecast.model';
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -40,7 +36,6 @@ export class HomeComponent {
     this.http.getLocation(this.input).subscribe((res) => {
       this.result = res;
       this.result.latitude = res.latitude;
-      // console.log(this.result);
     });
   }
 
@@ -48,8 +43,7 @@ export class HomeComponent {
     const lat = key.latitude;
     const lon = key.longitude;
     this.http.getweather(lat, lon).subscribe((res) => {
-      this.current = res
-      // console.log(this.current)
+      this.current = res;
     });
     this.getForcastTs(lat, lon);
     this.visible = !this.visible;
